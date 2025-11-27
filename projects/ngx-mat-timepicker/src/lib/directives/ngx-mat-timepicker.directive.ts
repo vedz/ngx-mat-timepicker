@@ -33,7 +33,6 @@ import {DateTime} from "ts-luxon";
     ],
     // tslint:disable-next-line:no-host-metadata-property
     host: {
-        "[disabled]": "disabled",
         "(blur)": "onTouched()"
     },
     standalone: true
@@ -142,7 +141,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     @HostBinding("attr.cdkOverlayOrigin") cdkOverlayOrigin: CdkOverlayOrigin =
         new CdkOverlayOrigin(this._matFormField ? this._matFormField.getConnectedOverlayOrigin() : this._elementRef);
     @Input() disableClick: boolean;
-    @Input() disabled: boolean;
+    @Input() @HostBinding('attr.disabled') disabled: boolean;
 
     private _format: NgxMatTimepickerFormatType = 12;
     private _max: string | DateTime;
@@ -240,4 +239,3 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
     }
 
 }
-
